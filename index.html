@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDP Märkischer Kreis - Unsere Positionen</title>
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="DE">
+    <link rel="canonical" href="https://fdp-maerkischer-kreis.github.io/fdp-mk-positionen/">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗳️</text></svg>">
+
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        /* FDP Farben */
+        :root {
+            --fdp-magenta: #e6007e;
+            --fdp-yellow: #ffed00;
+            --fdp-blue: #0052cc;
+            --fdp-turquoise: #00bcd4;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* FDP Logo */
+        .fdp-logo {
+            display: inline-block;
+            background: white;
+            border: 3px solid var(--fdp-magenta);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(230, 0, 126, 0.2);
+        }
+
+        .logo-text-main {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--fdp-blue);
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .logo-text-sub {
+            background: var(--fdp-magenta);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Haupttitel */
+        .main-title {
+            font-size: 3rem;
+            color: var(--fdp-magenta);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Karten Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Flip Cards */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid;
+        }
+
+        .flip-card-front {
+            background: white;
+        }
+
+        .flip-card-back {
+            color: white;
+            transform: rotateY(180deg);
+            padding: 15px;
+        }
+
+        /* Karten Farben und Symbole */
+        .card-wohnen {
+            border-color: var(--fdp-turquoise);
+        }
+        .card-wohnen .flip-card-back {
+            background: var(--fdp-turquoise);
+        }
+        .card-wohnen .card-icon::before {
+            content: "🏗️";
+            font-size: 3rem;
+        }
+
+        .card-kultur {
+            border-color: var(--fdp-magenta);
+        }
+        .card-kultur .flip-card-back {
+            background: var(--fdp-magenta);
+        }
+        .card-kultur .card-icon::before {
+            content: "🎭⚽";
+            font-size: 2.5rem;
+        }
+
+        .card-wirtschaft {
+            border-color: var(--fdp-magenta);
+        }
+        .card-wirtschaft .flip-card-back {
+            background: var(--fdp-magenta);
+        }
+        .card-wirtschaft .card-icon::before {
+            content: "📈";
+            font-size: 3rem;
+        }
+
+        .card-umwelt {
+            border-color: var(--fdp-turquoise);
+        }
+        .card-umwelt .flip-card-back {
+            background: var(--fdp-turquoise);
+        }
+        .card-umwelt .card-icon::before {
+            content: "🌱";
+            font-size: 3rem;
+        }
+
+        .card-sicherheit {
+            border-color: var(--fdp-yellow);
+            background: linear-gradient(to bottom, var(--fdp-yellow) 60%, var(--fdp-magenta) 60%);
+        }
+        .card-sicherheit .flip-card-back {
+            background: linear-gradient(135deg, var(--fdp-yellow), var(--fdp-magenta));
+        }
+        .card-sicherheit .card-icon::before {
+            content: "🛡️🧹";
+            font-size: 2.5rem;
+        }
+
+        .card-verkehr {
+            border-color: var(--fdp-turquoise);
+            background: linear-gradient(to bottom, var(--fdp-turquoise) 70%, var(--fdp-yellow) 70%);
+        }
+        .card-verkehr .flip-card-back {
+            background: linear-gradient(135deg, var(--fdp-turquoise), var(--fdp-blue));
+        }
+        .card-verkehr .card-icon::before {
+            content: "🚗";
+            font-size: 3rem;
+        }
+
+        .card-integration {
+            border-color: var(--fdp-yellow);
+        }
+        .card-integration .flip-card-back {
+            background: var(--fdp-yellow);
+            color: #333;
+        }
+        .card-integration .card-icon::before {
+            content: "🤝";
+            font-size: 3rem;
+        }
+
+        .card-digitalisierung {
+            border-color: var(--fdp-turquoise);
+        }
+        .card-digitalisierung .flip-card-back {
+            background: var(--fdp-turquoise);
+        }
+        .card-digitalisierung .card-icon::before {
+            content: "💻";
+            font-size: 3rem;
+        }
+
+        .card-bildung {
+            border-color: var(--fdp-blue);
+        }
+        .card-bildung .flip-card-back {
+            background: var(--fdp-blue);
+        }
+        .card-bildung .card-icon::before {
+            content: "🎓";
+            font-size: 3rem;
+        }
+
+        .card-finanzen {
+            border-color: var(--fdp-magenta);
+        }
+        .card-finanzen .flip-card-back {
+            background: var(--fdp-magenta);
+        }
+        .card-finanzen .card-icon::before {
+            content: "💰";
+            font-size: 3rem;
+        }
+
+        .card-icon {
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .flip-card-back .card-title {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card-integration .flip-card-back .card-title {
+            color: #333;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text-main {
+                font-size: 1.8rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            
+            .flip-card {
+                height: 180px;
+            }
+            
+            .card-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flip-card {
+                height: 160px;
+            }
+        }
+
+        /* Touch Support für Mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .flip-card:active .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- FDP Logo -->
+        <div class="fdp-logo">
+            <div class="logo-text-main">
+                Freie<br>
+                Demokraten
+            </div>
+            <div class="logo-text-sub">
+                Kreisverband<br>Märkischer Kreis FDP
+            </div>
+        </div>
+        
+        <!-- Haupttitel -->
+        <h1 class="main-title">FDP Märkischer Kreis</h1>
+        <h2 class="subtitle">Unsere Positionen</h2>
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Karten Grid -->
+        <div class="cards-grid">
+            <!-- Karte 1: Wohnen & Bauen -->
+            <div class="flip-card card-wohnen">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">WOHNEN &<br>BAUEN</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">WOHNEN & BAUEN</h3>
+                        <p class="card-description">
+                            Bezahlbarer Wohnraum für alle Bürger im Märkischen Kreis. Wir fördern nachhaltiges Bauen, 
+                            reduzieren Bürokratie und unterstützen Eigenheimbesitzer sowie Mieter gleichermaßen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 2: Kultur & Sport -->
+            <div class="flip-card card-kultur">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">KULTUR &<br>SPORT</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">KULTUR & SPORT</h3>
+                        <p class="card-description">
+                            Vielfältige Kultur- und Sportangebote stärken unsere Gemeinschaft. Wir unterstützen Vereine, 
+                            fördern kulturelle Veranstaltungen und investieren in moderne Sportstätten.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 3: Wirtschaft -->
+            <div class="flip-card card-wirtschaft">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">WIRTSCHAFT</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">WIRTSCHAFT</h3>
+                        <p class="card-description">
+                            Starke Wirtschaft für sichere Arbeitsplätze. Wir setzen auf Bürokratieabbau, 
+                            Innovation und die Unterstützung von Start-ups und Mittelstand im Märkischen Kreis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 4: Umwelt & Klima -->
+            <div class="flip-card card-umwelt">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">UMWELT &<br>KLIMA</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">UMWELT & KLIMA</h3>
+                        <p class="card-description">
+                            Klimaschutz durch Innovation statt Verbote. Wir fördern erneuerbare Energien, 
+                            nachhaltige Technologien und marktwirtschaftliche Lösungen für den Umweltschutz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 5: Sicherheit & Sauberkeit -->
+            <div class="flip-card card-sicherheit">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">SICHERHEIT &<br>SAUBERKEIT</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">SICHERHEIT & SAUBERKEIT</h3>
+                        <p class="card-description">
+                            Sicherheit und Sauberkeit für alle Bürger. Wir stärken die örtliche Polizei, 
+                            verbessern die Straßenreinigung und sorgen für eine gepflegte Stadt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 6: Verkehr & Mobilität -->
+            <div class="flip-card card-verkehr">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">VERKEHR &<br>MOBILITÄT</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">VERKEHR & MOBILITÄT</h3>
+                        <p class="card-description">
+                            Moderne Mobilität für alle. Wir fördern den ÖPNV, unterstützen E-Mobilität 
+                            und sorgen für eine leistungsfähige Verkehrsinfrastruktur im Märkischen Kreis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 7: Integration -->
+            <div class="flip-card card-integration">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">INTEGRATION</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">INTEGRATION</h3>
+                        <p class="card-description">
+                            Erfolgreiche Integration durch Bildung und Arbeit. Wir fördern Sprachkurse, 
+                            berufliche Qualifikation und das Miteinander aller Bürger im Märkischen Kreis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 8: Digitalisierung -->
+            <div class="flip-card card-digitalisierung">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">DIGITALISIERUNG</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">DIGITALISIERUNG</h3>
+                        <p class="card-description">
+                            Digitale Zukunft für den Märkischen Kreis. Wir fördern den Breitbandausbau, 
+                            digitale Verwaltung und die Digitalisierung von Schulen und Unternehmen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 9: Bildung -->
+            <div class="flip-card card-bildung">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">BILDUNG</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">BILDUNG</h3>
+                        <p class="card-description">
+                            Exzellente Bildung für alle Kinder. Wir investieren in moderne Schulausstattung, 
+                            qualifizierte Lehrkräfte und innovative Lernmethoden für die Zukunft.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karte 10: Finanzen -->
+            <div class="flip-card card-finanzen">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="card-icon"></div>
+                        <h3 class="card-title">FINANZEN</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="card-title">FINANZEN</h3>
+                        <p class="card-description">
+                            Solide Finanzen für nachhaltige Politik. Wir setzen auf sparsame Haushaltsführung, 
+                            effiziente Verwaltung und verantwortungsvolle Investitionen in die Zukunft.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 FDP Märkischer Kreis | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        // Touch Support für Mobile Flip-Karten
+        if ('ontouchstart' in window) {
+            const flipCards = document.querySelectorAll('.flip-card');
+            flipCards.forEach(card => {
+                let isFlipped = false;
+                card.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    if (!isFlipped) {
+                        this.querySelector('.flip-card-inner').style.transform = 'rotateY(180deg)';
+                        isFlipped = true;
+                    } else {
+                        this.querySelector('.flip-card-inner').style.transform = 'rotateY(0deg)';
+                        isFlipped = false;
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
