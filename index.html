@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDP Märkischer Kreis - Unsere Positionen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            width: 300px;
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .main-title {
+            color: #e91e63;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .card-container {
+            height: 200px;
+            perspective: 1000px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1.5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.2);
+            border: 3px solid #e91e63;
+            overflow: hidden;
+        }
+
+        .card-front {
+            background: white;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+            color: white;
+            transform: rotateY(180deg);
+            flex-direction: column;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #e91e63;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .card-back h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .card-container {
+                height: 180px;
+            }
+            
+            .card-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .card-title {
+                font-size: 1rem;
+            }
+            
+            .logo {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-container {
+                height: 160px;
+            }
+        }
+
+        /* Hover effects */
+        .card-front {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-front {
+            box-shadow: 0 12px 35px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Animation for better UX */
+        .card-container {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger animation for cards */
+        .card-container:nth-child(1) { animation-delay: 0.1s; }
+        .card-container:nth-child(2) { animation-delay: 0.2s; }
+        .card-container:nth-child(3) { animation-delay: 0.3s; }
+        .card-container:nth-child(4) { animation-delay: 0.4s; }
+        .card-container:nth-child(5) { animation-delay: 0.5s; }
+        .card-container:nth-child(6) { animation-delay: 0.6s; }
+        .card-container:nth-child(7) { animation-delay: 0.7s; }
+        .card-container:nth-child(8) { animation-delay: 0.8s; }
+        .card-container:nth-child(9) { animation-delay: 0.9s; }
+        .card-container:nth-child(10) { animation-delay: 1.0s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://page.gensparksite.com/v1/base64_upload/c6d0f8a73ae2772dfcf472c28f7bcbf2" alt="FDP Logo" class="logo">
+            <h1 class="main-title">FDP Märkischer Kreis</h1>
+            <p class="subtitle">Unsere Positionen</p>
+        </header>
+
+        <div class="cards-grid">
+            <!-- Card 1: Wohnen & Bauen -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/776fbd84fc3a95fd2dc95bce589a93b7" alt="Wohnen & Bauen" class="card-icon">
+                        <h3 class="card-title">Wohnen & Bauen</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Wohnen & Bauen</h3>
+                        <p class="card-description">Bezahlbarer Wohnraum durch weniger Bürokratie und mehr Bauland. Wir fördern innovative Wohnkonzepte und nachhaltiges Bauen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Kultur & Sport -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/6a3d5f48f2d3199fe56f41571c5dbc1b" alt="Kultur & Sport" class="card-icon">
+                        <h3 class="card-title">Kultur & Sport</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Kultur & Sport</h3>
+                        <p class="card-description">Vielfältige Kulturlandschaft und starker Breitensport. Wir unterstützen Vereine und schaffen Raum für kreative Entfaltung.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Wirtschaft -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/6805f41a3b4ee092e25cd334262aada9" alt="Wirtschaft" class="card-icon">
+                        <h3 class="card-title">Wirtschaft</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Wirtschaft</h3>
+                        <p class="card-description">Starke Unternehmen schaffen Arbeitsplätze. Wir reduzieren Bürokratie und fördern Innovation im Märkischen Kreis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Umwelt & Klima -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/06a900602293fbc3aff5ebfba326699d" alt="Umwelt & Klima" class="card-icon">
+                        <h3 class="card-title">Umwelt & Klima</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Umwelt & Klima</h3>
+                        <p class="card-description">Klimaschutz durch Innovation statt Verbote. Wir setzen auf erneuerbare Energien und nachhaltige Technologien.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Sicherheit & Sauberkeit -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/1df5c7b3e22f3e7b089d05dc4870499d" alt="Sicherheit & Sauberkeit" class="card-icon">
+                        <h3 class="card-title">Sicherheit & Sauberkeit</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Sicherheit & Sauberkeit</h3>
+                        <p class="card-description">Sichere und saubere Städte für alle. Wir stärken die Polizei und fördern präventive Maßnahmen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Verkehr & Mobilität -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/23bb8e4d39412bb8571457a27d026703" alt="Verkehr & Mobilität" class="card-icon">
+                        <h3 class="card-title">Verkehr & Mobilität</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Verkehr & Mobilität</h3>
+                        <p class="card-description">Moderne Mobilität für alle. Wir verbessern den ÖPNV und schaffen intelligente Verkehrslösungen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Integration -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/13ab719b71238ac92cfa151d20935e62" alt="Integration" class="card-icon">
+                        <h3 class="card-title">Integration</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Integration</h3>
+                        <p class="card-description">Erfolgreiche Integration durch Bildung und Arbeit. Wir fördern Chancengerechtigkeit und gesellschaftlichen Zusammenhalt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8: Digitalisierung -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/278d35cc81f9dd34c568e9b0b37c63e4" alt="Digitalisierung" class="card-icon">
+                        <h3 class="card-title">Digitalisierung</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Digitalisierung</h3>
+                        <p class="card-description">Schnelles Internet und digitale Verwaltung. Wir bringen den Märkischen Kreis ins digitale Zeitalter.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9: Bildung -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/ab07f8f347c8f68cbf00d37670d1328b" alt="Bildung" class="card-icon">
+                        <h3 class="card-title">Bildung</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Bildung</h3>
+                        <p class="card-description">Exzellente Bildung von der Kita bis zur Hochschule. Wir investieren in moderne Schulen und digitale Ausstattung.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10: Finanzen -->
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <img src="https://page.gensparksite.com/v1/base64_upload/63feececdc2dad427c4d2ef9d0baab1e" alt="Finanzen" class="card-icon">
+                        <h3 class="card-title">Finanzen</h3>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Finanzen</h3>
+                        <p class="card-description">Solide Haushaltsführung und niedrige Steuern. Wir schaffen finanzielle Spielräume für wichtige Investitionen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
